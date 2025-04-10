@@ -1,10 +1,10 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     /* box-sizing: border-box; */
-}
 
-.body{
+
+/* .body{
     background-image: url(assets/backgroundgreen.jpg);
     min-height: 150vh;
     background-size: cover;
@@ -15,9 +15,31 @@
     background-attachment: fixed;
     min-height: 100vh; 
     /* overflow: hidden; */
-}
+ 
+/* #board {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+} */
 
-#board{
+/* .head {
+    background: radial-gradient(circle, rgba(0, 128, 255, 1) 0%, rgba(0, 76, 153, 1) 100%);
+    border: 2px solid white;
+    border-radius: 50%;
+} */
+
+/* .snake {
+    background: linear-gradient(90deg, rgba(34, 139, 34, 1) 0%, rgba(50, 205, 50, 1) 100%);
+    border: 1px solid black;
+    border-radius: 5px;
+} */
+
+/* .food {
+    background: radial-gradient(circle, rgba(255, 69, 0, 1) 0%, rgba(255, 140, 0, 1) 100%);
+    border: 2px solid yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+} */
+/* #board{
     background: linear-gradient(rgb(149, 207, 156), rgb(38, 218, 107));
     width: 90vmin;
     height: 90vmin;
@@ -25,16 +47,96 @@
     display: grid;
     grid-template-rows: repeat(18, 1fr);
     grid-template-columns: repeat(18, 1fr);
-}
+} */
 
-.head{
+/* .head{
     background-color: blueviolet;
-}
+} */
 
-.snake{
+/* .snake{
     background-color:rgb(242, 55, 55);
+} */
+
+/* .food{
+    background-color:rgb(241, 230, 18);
+} */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.food{
-    background-color:rgb(241, 230, 18);
+.body {
+    background-image: url(assets/snakebackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional overlay to dim background */
+.body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+#board {
+    background: linear-gradient(to bottom right, #8ee4af, #379683);
+    width: 90vmin;
+    height: 90vmin;
+    border: 4px solid #222;
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+}
+
+/* Snake Head */
+.head {
+    background: radial-gradient(circle, rgba(0, 128, 255, 1) 0%, rgba(0, 76, 153, 1) 100%);
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: glow 1s infinite alternate;
+}
+
+/* Glow effect for snake head */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px white;
+    }
+    to {
+        box-shadow: 0 0 20px blueviolet;
+    }
+}
+
+/* Snake Body */
+.snake {
+    background: linear-gradient(90deg, rgba(34, 139, 34, 1) 0%, rgba(50, 205, 50, 1) 100%);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+/* Food */
+.food {
+    background: radial-gradient(circle, rgba(255, 69, 0, 1) 0%, rgba(255, 140, 0, 1) 100%);
+    border: 2px solid yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
+.food:hover {
+    transform: scale(1.4);
 }

@@ -1,0 +1,5 @@
+Change the background picture 
+add audio 
+add score if you want 
+you can also add difficulty level 
+Add styling to the snake 

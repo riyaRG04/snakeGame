@@ -1,9 +1,16 @@
+// const eatingSound = new Audio('assets/ate_jumpinng.wav');
+// const lossingSound = new Audio('assets/losing.wav');
+// const gamemusic = new Audio('assets/game-music.mp3');
+// gamemusic.loop = true; // Loop the audio
+// gamemusic.volume = 0.5; // Set the volume to 50%    
+// gamemusic.play(); // Play the audio
+
+
 let ipdirection = {x:0, y:0};
 let speed = 5;
 let snakearr=[{x:13,y:15}];
 let lastpainttime=0;
 food = {x:6,y:7};
-const eatingSound = new Audio('assets/eating.wav');
 
 function main(ctime) {
     window.requestAnimationFrame(main);
@@ -32,6 +39,7 @@ function gameEngine() {
     board.innerHTML = "";
     // if snake collides with itself or wall, game over
     if (isCollide(snakearr)) {
+
         alert("Game Over. Press any key to play again.");
         snakearr = [{x:13,y:15}];
         ipdirection={x:0,y:0};
@@ -39,9 +47,6 @@ function gameEngine() {
     // check if snake has eaten the food
     if (snakearr[0].x === food.x && snakearr[0].y === food.y) {
         // add a new segment to the snake
-
-        eatingSound.currentTime = 0.02; // Skip the first 1 second of the audio
-        eatingSound.play();
         snakearr.unshift({x: snakearr[0].x + ipdirection.x, y: snakearr[0].y + ipdirection.y});
         // generate new food
         food = {x: Math.floor(Math.random() * 16) + 1, y: Math.floor(Math.random() * 16) + 1};
@@ -71,10 +76,10 @@ function gameEngine() {
     board.appendChild(foodElement);
 
 }
-// main function to start the game  
-window.requestAnimationFrame(main);
+
 // listen to keyboard events
 document.addEventListener('keydown', e => {
+    
     if (e.key === 'ArrowUp') {
         ipdirection.x = 0;
         ipdirection.y = -1;
@@ -89,11 +94,5 @@ document.addEventListener('keydown', e => {
         ipdirection.y = 0;
     }
 });
-// function to start the game   
-function startGame() {
-    // reset the game state
-    snakearr = [{x:13,y:15}];
-    ipdirection={x:0,y:0};
-    lastpainttime=0;
-    main(0);
-}
+// main function to start the game  
+window.requestAnimationFrame(main);
